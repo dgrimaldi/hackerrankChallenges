@@ -29,7 +29,7 @@ Each of the next lines describes a row, **arr[i]**, and consists of space-separa
 
 **Constraints**
 
-* **-100 <= arr[i][j] <= 100**
+* **-100 ≤ arr[i][j] ≤ 100**
 
 **Output Format**
 
