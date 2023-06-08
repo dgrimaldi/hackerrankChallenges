@@ -1,27 +1,5 @@
 'use strict';
-
-import { WriteStream, createWriteStream } from "fs";
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-
-let inputString: string = '';
-let inputLines: string[] = [];
-let currentLine: number = 0;
-
-process.stdin.on('data', function(inputStdin: string): void {
-    inputString += inputStdin;
-});
-
-process.stdin.on('end', function(): void {
-    inputLines = inputString.split('\n');
-    inputString = '';
-
-    main();
-});
-
-function readLine(): string {
-    return inputLines[currentLine++];
-}
+const readLineFunc= require('../../utils/readLine');
 
 /*
  * Complete the 'compareTriplets' function below.
@@ -31,7 +9,6 @@ function readLine(): string {
  *  1. INTEGER_ARRAY a
  *  2. INTEGER_ARRAY b
  */
-
 function compareTriplets(a: number[], b: number[]): number[] {
     let res: number[] = [0, 0]
     if(a.length === b.length){
@@ -44,17 +21,17 @@ function compareTriplets(a: number[], b: number[]): number[] {
     return res
 
 }
+async function main() {
 
-function main() {
-    const ws: WriteStream = createWriteStream(process.env['OUTPUT_PATH']);
+    const inputLine = await readLineFunc.Input(2);
 
-    const a: number[] = readLine().replace(/\s+$/g, '').split(' ').map(aTemp => parseInt(aTemp, 10));
+    const a: number[] = inputLine[0].replace(/\s+$/g, '').split(' ').map((aTemp: string) => parseInt(aTemp, 10));
 
-    const b: number[] = readLine().replace(/\s+$/g, '').split(' ').map(bTemp => parseInt(bTemp, 10));
+    const b: number[] = inputLine[1].replace(/\s+$/g, '').split(' ').map((bTemp: string) => parseInt(bTemp, 10));
 
-    const result: number[] = compareTriplets(a, b);
-
-    ws.write(result.join(' ') + '\n');
-
-    ws.end();
+    return compareTriplets(a, b);
 }
+
+main();
+
+module.exports = {compareTriplets}

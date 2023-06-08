@@ -1,27 +1,5 @@
 'use strict';
-
-import { WriteStream, createWriteStream } from "fs";
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-
-let inputString: string = '';
-let inputLines: string[] = [];
-let currentLine: number = 0;
-
-process.stdin.on('data', function(inputStdin: string): void {
-    inputString += inputStdin;
-});
-
-process.stdin.on('end', function(): void {
-    inputLines = inputString.split('\n');
-    inputString = '';
-
-    main();
-});
-
-function readLine(): string {
-    return inputLines[currentLine++];
-}
+const readLineFunc= require('../../utils/readLine');
 
 /*
  * Complete the 'aVeryBigSum' function below.
@@ -31,21 +9,20 @@ function readLine(): string {
  */
 
 function aVeryBigSum(ar: number[]): number {
+    console.log(ar.reduce((prevValue: number, currValue: number)=> prevValue + currValue))
     // Write your code here
     return ar.reduce((prevValue: number, currValue: number)=> prevValue + currValue);
 
 }
 
-function main() {
-    const ws: WriteStream = createWriteStream(process.env['OUTPUT_PATH']);
+async function main() {
+    const inputLine = await readLineFunc.Input(1);
 
-    const arCount: number = parseInt(readLine().trim(), 10);
+    const ar: number[] = inputLine.replace(/\s+$/g, '').split(' ').map(arTemp => parseInt(arTemp, 10));
 
-    const ar: number[] = readLine().replace(/\s+$/g, '').split(' ').map(arTemp => parseInt(arTemp, 10));
-
-    const result: number = aVeryBigSum(ar);
-
-    ws.write(result + '\n');
-
-    ws.end();
+    return aVeryBigSum(ar);
 }
+
+main();
+
+module.exports = {aVeryBigSum}
