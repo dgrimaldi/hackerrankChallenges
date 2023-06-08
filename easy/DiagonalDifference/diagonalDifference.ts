@@ -1,27 +1,5 @@
 'use strict';
-
-import { WriteStream, createWriteStream } from "fs";
-process.stdin.resume();
-process.stdin.setEncoding('utf-8');
-
-let inputString: string = '';
-let inputLines: string[] = [];
-let currentLine: number = 0;
-
-process.stdin.on('data', function(inputStdin: string): void {
-    inputString += inputStdin;
-});
-
-process.stdin.on('end', function(): void {
-    inputLines = inputString.split('\n');
-    inputString = '';
-
-    main();
-});
-
-function readLine(): string {
-    return inputLines[currentLine++];
-}
+const readLineFunc= require('../../utils/readLine');
 
 /*
  * Complete the 'diagonalDifference' function below.
@@ -44,20 +22,23 @@ function diagonalDifference(arr: number[][]): number {
     return Math.abs(rightToLeftDiagonal - leftToRightDiagonal)
 }
 
-function main() {
-    const ws: WriteStream = createWriteStream(process.env['OUTPUT_PATH']);
+async function main() {
 
-    const n: number = parseInt(readLine().trim(), 10);
+    const numberOfLines = 3
 
-    let arr: number[][] = Array(n);
+    const inputLine = await readLineFunc.Input(numberOfLines);
 
-    for (let i: number = 0; i < n; i++) {
-        arr[i] = readLine().replace(/\s+$/g, '').split(' ').map(arrTemp => parseInt(arrTemp, 10));
+    let arr: number[][] = Array(numberOfLines);
+
+    for (let i: number = 0; i < numberOfLines; i++) {
+        arr[i] = inputLine[i].replace(/\s+$/g, '').split(' ').map((arrTemp: string) => parseInt(arrTemp, 10));
     }
 
-    const result: number = diagonalDifference(arr);
+    console.log(diagonalDifference(arr))
 
-    ws.write(result + '\n');
-
-    ws.end();
+    return diagonalDifference(arr);
 }
+
+main();
+
+module.exports = {diagonalDifference}
