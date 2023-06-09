@@ -9,7 +9,6 @@ const readLineFunc= require('../../utils/readLine');
  */
 
 function aVeryBigSum(ar: number[]): number {
-    console.log(ar.reduce((prevValue: number, currValue: number)=> prevValue + currValue))
     // Write your code here
     return ar.reduce((prevValue: number, currValue: number)=> prevValue + currValue);
 
