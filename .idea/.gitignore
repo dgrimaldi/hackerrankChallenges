@@ -6,4 +6,8 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-../.idea
+/checkstyle-idea.xml
+/hackerrankChallenges.iml
+/wmodules.xml
+/wvcs.xml
+/wmisc.xml
