@@ -1,4 +1,5 @@
-<p align="center"><img src="src/main/resources/logo.png" alt="Hackerrank logo" width="450" align="center"/></p><br/>
+<img src="https://miro.medium.com/v2/resize:fit:1200/1*04oGvilaqzyDwqlhHrF8bA.png" alt="hackerrank-logo" style="width: 50%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
+<br/>
 
 ## hackerrank-challenges
 
