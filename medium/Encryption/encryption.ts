@@ -16,18 +16,19 @@ function encryption(s: string): string {
         path.push(text.slice(i-columns,i))
     }
 
-    let output = ''
-    for(let i = 0; i < columns; i++){
-        let j = 0;
+    let output: string = ''
+    for(let i: number = 0; i < columns; i++){
+        let j: number = 0;
         while(j < path.length && path[j].at(i)) {
             output += path[j].at(i);j++
-        }output += ' '
+        }
+        if(i !== columns -1) output += ' '
     }
     return output
 }
 
 async function main() {
-    const inputLine = await readLineFunc.Input(1);
+    const inputLine: string = await readLineFunc.Input(1);
 
     return encryption(inputLine);
 }
