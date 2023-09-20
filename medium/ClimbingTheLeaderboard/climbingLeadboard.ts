@@ -29,8 +29,8 @@ function climbingLeaderboard(ranked: number[], player: number[]): number[] {
 async function main() {
     const inputLine = await readLineFunc.Input(2);
 
-    const ranked: number[] = inputLine[0].replace(/\s+$/g, '').split(' ').map(rankedTemp => parseInt(rankedTemp, 10));
-    const player: number[] = inputLine[1].replace(/\s+$/g, '').split(' ').map(playerTemp => parseInt(playerTemp, 10))
+    const ranked: number[] = inputLine[0].replace(/\s+$/g, '').split(' ').map((rankedTemp: string) => parseInt(rankedTemp, 10));
+    const player: number[] = inputLine[1].replace(/\s+$/g, '').split(' ').map((playerTemp: string) => parseInt(playerTemp, 10))
 
     return climbingLeaderboard(ranked, player);
 }
