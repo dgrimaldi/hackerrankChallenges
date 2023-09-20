@@ -18,7 +18,7 @@ function climbingLeaderboard(ranked: number[], player: number[]): number[] {
     let lowestRank: number = uniqueLeadboard.length;
     player.forEach((playerScore) => { 
         while(playerScore >= uniqueLeadboard[lowestRank - 1] && lowestRank > 0) {
-            uniqueLeadboard.pop;
+            uniqueLeadboard.pop();
             lowestRank--;
         }
         finalRank.push(lowestRank + 1)
